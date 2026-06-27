@@ -1,0 +1,42 @@
+Pesudocode 
+📎Step 1: I will have three files Html, css, and javascript.
+
+📎Step 2: UI of the salon, Instructions of the game (how
+to win, the time you have to win and what to do "drag the
+blow dryer)
+
+📎Step 3: move the hair dryer with the mouse and the air is
+turned on as u can listen to its audio.
+
+📎Step 4: point the dryer to the hair sections and start 
+changing the hair color from dark"wet" to light "dry"
+the user has only 20 seconds to finish the hair.
+
+📎Step 5: win if the user takes only 20 seonds and lose
+if the user takes more than 20 seonds.
+
+📎Step 6: restart the game.
+
+User Stories 
+👤As a user I want to see a beautiful UI that represents the salon.
+
+👤As a user I want to click the start button to start drying the customer's hair.
+
+👤As a user I want to see the timer and know the instructions before the game starts.
+
+👤As a user I want to use the cursor to move the hair dryer and point it to the hair.
+
+👤As a user I want to know the  percentage of the hair wetness while drying it to 
+see if its decreasing and the hair is drying.
+
+👤As a user I want to see that the hair is becoming lighter when I'm drying it.
+
+👤As a user I want to win when I spent 20 seconds drying the hair and reach 
+0% wetness.
+
+👤As a user I want to lose when I spent more than 20 seconds drying the hair.
+
+👤As a user I want a restart button to replay the game.
+
+👤As a user I want the audio of salon to feel like Im in a real salon and I want 
+an audio for the blow dryer
