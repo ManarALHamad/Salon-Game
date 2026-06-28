@@ -1,68 +1,140 @@
-body {
-
-    background-color: pink;
-    font-family: Arial, Helvetica, sans-serif;
-    /* display: flex;  */
-    justify-content: center;
-    align-items: center; */
-    
-    /* flex-direction: column; */
+body{
+    margin:0;
+    padding:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:#f8f3ec;
 }
 
-.girl {
-
-    position: center;
-    width: 200px;
-    height: 250px;
-
-
+.character{
+    width:300px;
+    height:420px;
+    position:relative;
 }
 
-.face {
-
-    position: absolute;
-    top:200px;
-    left:50%;
-    transform:translateX(-50%);
-    width:130px;
-    height:180px;
-    background:#f7d4b5;
+.hairBase{
+    width:220px;
+    height:250px;
+    background:#5c3b1e;
     border-radius:50%;
-    
-
+    position:absolute;
+    top:20px;
+    left:40px;
+    z-index:1;
 }
 
-.hair{
+.face{
+    width:200px;
+    height:260px;
+    background:#f5c9a9;
+    border-radius:45% 45% 50% 50%;
+    border:2px solid #d8a17b;
+    position:absolute;
+    top:60px;
+    left:45px;
+
+    z-index:2;
+}
+
+.hairLeft{
+    width:90px;
+    height:300px;
+    background:#5c3b1e;
+    position:absolute;
+    left:20px;
+    top:120px;
+    border-radius:50px;
+    z-index:1;
+}
+
+.hairRight{
+
+    width:90px;
+    height:300px;
+    background:#5c3b1e;
+    position:absolute;
+    right:20px;
+    top:120px;
+    border-radius:50px;
+    z-index:1;
+}
+
+/* Bangs */
+.bangs{
+    width:160px;
+    height:85px;
+    background:#5c3b1e;
+    position:absolute;
+    top:45px;
+    left:65px;
+    border-radius:40px 40px 90px 80px;
+    z-index:3;
+}
+
+
+.wet{
+    width:220px;
+    height:250px;
+    background:rgba(0,150,255,.25);
+    position:absolute;
+    top:20px;
+    left:40px;
+    border-radius:50%;
+    display:none;
+    z-index:4;
+}
+
+.dryer{
+    width:100px;
+    height:50px;
+    background:#444;
+    border-radius:10px;
+    position:fixed;
+    bottom:50px;
+    left:50px;
+}
+
+/* Eyes */
+.eye{
+    width:20px;
+    height:20px;
+    background:#222;
+    border-radius:50%;
+    position:absolute;
+    top:90px;
+}
+
+.left-eye{
+    left:60px;
+}
+
+.right-eye{
+    right:60px;
+}
+
+/* Nose */
+.nose{
+    width:10px;
+    height:35px;
+    background:#e3b18d;
+    border-radius:10px;
 
     position:absolute;
-    top:140px;
-    left:38%;
-    behind
+    top:115px;
+    left:50%;
     transform:translateX(-50%);
-    width:128px;
-    height:118px;
-    background:#3a2313;
-    border-radius:55% 55% 42% 42% / 65% 65% 40% 40%;
-    
-
 }
-#hair{
-
-
-
-}
-
-
-.eyes{
-   
-
-}
-
-
 
 
 .mouth{
-
-
-
+    width:50px;
+    height:20px;
+    border-bottom:4px solid #b85d5d;
+    border-radius:0 0 40px 40px;
+    position:absolute;
+    bottom:50px;
+    left:50%;
+    transform:translateX(-50%);
 }

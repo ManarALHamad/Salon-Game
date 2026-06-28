@@ -6,46 +6,39 @@
     <title>Salon Game 💇🏻‍♀️</title>
     <link rel="stylesheet" href="./css/style.css">
     <script defer src="./app.js"></script>
-    <h1>Welcome to M's Salon 💇🏻‍♀️</h1>
 </head>
+
 <body>
 
-<p>Your task for Today is to air dry the customer's hair in 20 seconds
-    
-</p>
+<div class="character">
 
-<p>Click the Start button and the timer will start</p>
+    <!-- Hair Behind -->
+    <div class="hairBase" id="hairBase"></div>
+    <div class="hairLeft" id="hairLeft"></div>
+    <div class="hairRight" id="hairRight"></div>
 
-<button>Click to start</button>
+    <!-- Face -->
+    <div class="face">
+        <div class="ear left-ear"></div>
+        <div class="ear right-ear"></div>
 
-<!-- face of the girl -->
-<div class="girl">
+        <div class="eye left-eye"></div>
+        <div class="eye right-eye"></div>
 
-    <div class ="hair" id = "hair"></div>
-
-    <div class ="face"></div>
-
-    <div class ="eyes">
-
-        <div class ="left eyes"></div>
-        <div class ="right eyes"></div>
-        
+        <div class="nose"></div>
+        <div class="mouth"></div>
     </div>
 
-    <div class ="nose"></div>
+    <!-- Hair in Front -->
+    <div class="bangs" id="bangs"></div>
 
-    <div class ="mouth"></div>
-
-
-
+    <!-- Wet Hair Overlay -->
+    <div class="wet" id="wet"></div>
 
 </div>
 
+<!-- Hair Dryer -->
+<div class="dryer" id="dryer"></div>
 
-
-
-
-
-    
 </body>
 </html>
