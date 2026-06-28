@@ -5,7 +5,7 @@ body{
     justify-content:center;
     align-items:center;
     height:100vh;
-    background:#f8f3ec;
+    background:#e6b4d4;
 }
 
 .character{
@@ -86,15 +86,13 @@ body{
     z-index:4;
 }
 
-.dryer{
-    width:100px;
-    height:50px;
-    background:#444;
-    border-radius:10px;
-    position:fixed;
-    bottom:50px;
-    left:50px;
+/* blowdry */
+img{
+
+    height: 100px;
+    width: 100px;
 }
+
 
 /* Eyes */
 .eye{
@@ -138,3 +136,5 @@ body{
     left:50%;
     transform:translateX(-50%);
 }
+
+

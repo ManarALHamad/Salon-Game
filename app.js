@@ -1,29 +1,47 @@
 
 /*-------------------------------- Constants --------------------------------*/
-
+let isPlaying = false;
+let stopTimer;
 /*-------------------------------- Variables --------------------------------*/
 
 /*------------------------ Cached Element References ------------------------*/
 
-// const hair = document.querySelector('.hair')
-// console.log(hair)
-const dryer = document.querySelector('.dryer')
-console.log(dryer)
 
+const dryer = document.querySelector('img')
+console.log(dryer)
+const sound = new Audio ('sounds/hair-dryer-sound.mp3') //adding the blow-dryer sound
 
 
 /*----------------------------- Event Listeners -----------------------------*/
 
-// hair.addEventListener ('click', function(event){
-
-//     const clickedHair = event.target;
-//     console.log('hair clicked')
-// })
-
-dryer.addEventListener('move', function(event){
+//dryer is clicked and the sound only plays for 10 seconds
+dryer.addEventListener('click', function(event){
 
     const dragDryer = event.target;
-    console.log('dryer is drag')
+    console.log('dryer is clicked')
+    
+    
+
+    if(isPlaying){
+
+        clearTimeout(stopTimer);
+    }
+
+    else {
+
+        sound.currentTime = 0;
+        sound.play()
+        isPlaying =true;
+
+    }
+
+    stopTimer = setTimeout (function(){
+        sound.pause()
+        sound.currentTime = 0;
+        isPlaying =false;
+
+    }, 10000)
+    
 })
 
 /*-------------------------------- Functions --------------------------------*/
