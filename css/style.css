@@ -77,7 +77,7 @@ body{
 /* blowdry */
 img{
 
-    height: 180px;
+    height: 190px;
     width: 180px;
 }
 
@@ -172,7 +172,19 @@ img{
 }
 
 #dryer img{
+
     width:130px;
     user-select:none;
     pointer-events:none; /* prevents the image from blocking dragging */
+}
+
+#water img{
+
+    position:absolute;
+    top:80px;
+    left:250px;
+    width:180px;
+    display:none;
+    pointer-events:none;
+
 }
