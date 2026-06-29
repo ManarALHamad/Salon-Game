@@ -2,7 +2,7 @@
 /*-------------------------------- Constants --------------------------------*/
 // let isPlaying = false;
     let stopTimer;
-// let isDragging =false;
+
 // let timer = 20;
 // let stop;
 // let isClicked = false;
@@ -10,18 +10,16 @@
 
 /*------------------------ Cached Element References ------------------------*/
 
-
-// const dryer = document.querySelector('img')
-// console.log(dryer)
 const sound = new Audio ('sounds/hair-dryer-sound.mp3') //adding the blow-dryer sound
 // const startBtn = document.querySelector('#startBtn')
 // const timer = document.querySelector('#timer')
 
 /*----------------------------- Event Listeners -----------------------------*/
-// drag and drop
 
+//drag the hair dryer and point it to the hair
 
 const dryer = document.getElementById("dryer");
+
 
 let isDragging = false;
 let offsetX = 0;  //store where the dryer is clicked 
@@ -40,11 +38,14 @@ dryer.addEventListener("mousedown", function (event) {
 
     dryer.style.cursor = "grabbing";
 
-    //when dragging the dryer the sound will play
+    //when dragging the dryer the sound will play and 
+    // hair will be touched
+
     if(isDragging){
 
         sound.play()
-        sound.currenTime = 0;
+        sound.currentTime = 0;
+        
 
     }
      stopTimer = setTimeout (function(){
@@ -64,6 +65,21 @@ document.addEventListener("mousemove", function (event) {
 
     dryer.style.left = (event.clientX - offsetX) + "px";
     dryer.style.top = (event.clientY - offsetY) + "px";
+    // direction of the hair 
+    const hair =document.getElementById("dropZone")
+    const dryerRect = dryer.getBoundingClientRect();
+    const hairRect = hair.getBoundingClientRect();
+
+        if (
+        dryerRect.right > hairRect.left &&
+        dryerRect.left < hairRect.right &&
+        dryerRect.bottom > hairRect.top &&
+        dryerRect.top < hairRect.bottom
+    ) 
+
+        console.log("Hair is touched!");
+
+
 });
 
 // Stop dragging
@@ -72,16 +88,6 @@ document.addEventListener("mouseup", function () {
     isDragging = false;
     dryer.style.cursor = "grab";
 });
-
-
-
-
-
-
-
-
-
-
 
 
 
