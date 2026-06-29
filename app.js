@@ -1,6 +1,6 @@
 
 /*-------------------------------- Constants --------------------------------*/
-// let isPlaying = false;
+
 let stopTimer;
 let isDragging = false;
 let offsetX = 0;  //store where the dryer is clicked 
@@ -95,7 +95,7 @@ document.addEventListener("mousemove", function (event) {
 
     // we will point to the hair using right, left, top, bottom
     // direction of the hair 
-    // dropxone is the hair sections
+    // dropzone is the hair sections
 
     const hair =document.getElementById("dropZone")
     const dryerRect = dryer.getBoundingClientRect();
@@ -113,92 +113,15 @@ document.addEventListener("mousemove", function (event) {
 
 });
 
-// Stop dragging
+// stop dragging
 document.addEventListener("mouseup", function () {
 
     isDragging = false;
     dryer.style.cursor = "grab";
 });
 
+// wet dark and dry light we will add water
 
-
-
-//click start then the timer will begin 
-
-// startBtn.addEventListener('click', function(event){
-
-// const start = event.target;
-// console.log('start is clicked')
-
-// if(isClicked){
-
-//     clearTimeout(stopTimer);
-// }
-
-// else {
-
-//     timer.currentTime =0;
-//     timer.start()
-//     isClicked = true;
-// }
-
-// stopTimer = setTimeout (function(){
-
-//     timer.pause()
-//     timer.currentTime 
-// })
-
-// })
-
-
-//     //20 seconds but in code we write it in milisecond
-
-//     //if clicked the startBtn the timer will start and show in the ui
-
-   
-
-
-
-
-
-
-
-
-// //dryer is moved and the sound only plays for 10 seconds
-
-// dryer.addEventListener('click', function(event){
-
-//     const dragDryer = event.target;
-//     console.log('dryer is clicked')
-    
-    
-//     //check if the sound of dryer is playing or no 
-//     // is playing either T or F
-//     if(isPlaying){
-
-//         //if the sound is playing will stop it
-//         clearTimeout(stopTimer);
-//     }
-
-//     // now we will play the dryer sound 
-//     else {
-
-//         sound.currentTime = 0;
-//         sound.play()
-//         isPlaying =true; //true to play the sound
-
-//     }
-
-//     //timer so the sound only plays for 10 seconds 
-//     stopTimer = setTimeout (function(){
-
-//         sound.pause()
-//         sound.currentTime = 0;
-//         isPlaying =false;
-
-//     }, 10000) //10 seconds
-    
-// })
 
 
 
