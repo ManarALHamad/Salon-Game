@@ -29,8 +29,8 @@ body{
     width:200px;
     height:260px;
     background:#f5c9a9;
-    border-radius:45% 45% 50% 50%;
     border:2px solid #d8a17b;
+    border-radius:45% 45% 50% 50%;
     position:absolute;
     top:60px;
     left:45px;
@@ -61,7 +61,7 @@ body{
     z-index:1;
 }
 
-/* Bangs */
+
 .bangs{
     width:160px;
     height:85px;
@@ -74,23 +74,11 @@ body{
 }
 
 
-.wet{
-    width:220px;
-    height:250px;
-    background:rgba(0,150,255,.25);
-    position:absolute;
-    top:20px;
-    left:40px;
-    border-radius:50%;
-    display:none;
-    z-index:4;
-}
-
 /* blowdry */
 img{
 
-    height: 100px;
-    width: 100px;
+    height: 180px;
+    width: 180px;
 }
 
 
@@ -137,4 +125,54 @@ img{
     transform:translateX(-50%);
 }
 
+.game{
 
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:10px 20px;
+    z-index:20;
+
+}
+
+#timer {
+
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    background: white;
+    padding: 10px 15px;
+   
+    
+}
+
+#reset {
+
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    /* move to the left horizontaly */
+    transform: translateX(-50%); 
+
+}
+
+
+#dryer{
+    position: fixed;
+    left: 40px;
+    bottom: 40px;
+    cursor: grab;
+    z-index: 1000;
+}
+
+#dryer img{
+    width:130px;
+    user-select:none;
+    pointer-events:none; /* prevents the image from blocking dragging */
+}
