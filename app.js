@@ -6,6 +6,11 @@ let isDragging = false;
 let offsetX = 0;  //store where the dryer is clicked 
 let offsetY = 0;
 let runTimer;
+//hair sections 
+let baseDry = false;
+let leftDry = false;
+let rightDry = false;
+let bangsDry =false;
 
 /*-------------------------------- Variables --------------------------------*/
 
@@ -38,7 +43,7 @@ startBtn.addEventListener("click", function (event) {
         time--;
         timer.textContent = "Time: " + time;
 
-        console.log("Time left:", time);
+        // console.log("Time left:", time);
 
         if (time <= 0) {
 
@@ -57,21 +62,46 @@ startBtn.addEventListener("click", function (event) {
 
 // /*-------------------------------- Functions --------------------------------*
 
-function dryHair(){
+function dryHairBase(){
 
    hairBase.style.backgroundColor = '#714926';
-   hairLeft.style.backgroundColor = '#714926';
-   hairRight.style.backgroundColor = '#714926';
-   bangs.style.backgroundColor = '#714926';
-
+   baseDry = true;
+   checkWin();  
 }
+
+function dryHairLeft(){
+
+    hairLeft.style.backgroundColor = '#714926';
+    leftDry = true;
+    checkWin();
+}
+
+function dryHairRight(){
+
+    hairRight.style.backgroundColor = '#714926';
+    rightDry = true;
+    checkWin();
+}
+
+function dryHairBangs(){
+
+    bangs.style.backgroundColor = '#714926';
+    bangsDry = true;
+    checkWin();
+}   
+   
 
 function wetHair(){
 
-    hairBase.style.backgroundColor = '#59371a';
-   hairLeft.style.backgroundColor = '#59371a';
-   hairRight.style.backgroundColor = '#59371a';
-   bangs.style.backgroundColor = '#59371a';
+   hairBase.style.backgroundColor = '#331d0a';
+   hairLeft.style.backgroundColor = '#331d0a';
+   hairRight.style.backgroundColor = '#331d0a';
+   bangs.style.backgroundColor = '#331d0a';
+
+    baseDry = false;
+    leftDry = false;
+    rightDry = false;
+    bangsDry =false;
 
 }
 
@@ -136,15 +166,49 @@ document.addEventListener("mousemove", function (event) {
 
     //this if statement will check if dryer and hair overlap
 
-        if (
-        dryerRect.right > hairRect.left &&
-        dryerRect.left < hairRect.right &&
-        dryerRect.bottom > hairRect.top &&
-        dryerRect.top < hairRect.bottom
-    ) 
+    //     if (
+    //     dryerRect.right > hairRect.left &&
+    //     dryerRect.left < hairRect.right &&
+    //     dryerRect.bottom > hairRect.top &&
+    //     dryerRect.top < hairRect.bottom
+    // ) 
+
+    if(dryerRect.top < hairRect.bottom){
 
         console.log("Hair is touched!");
-        dryHair();
+
+        setTimeout(function(){
+            dryHairBangs();
+        }, 2000)
+
+    }
+
+    if (dryerRect.bottom > hairRect.top){
+
+        setTimeout(function(){
+            dryHairBase();
+        }, 2000)
+    }
+
+    if(dryerRect.left < hairRect.right){
+
+        setTimeout(function(){
+            dryHairLeft();
+        }, 2000)
+
+    }
+
+    if(dryerRect.right > hairRect.left){
+
+         setTimeout(function(){
+            dryHairRight();
+        }, 2000)
+            
+    }
+
+
+
+
 
 
 });
@@ -156,19 +220,40 @@ document.addEventListener("mouseup", function () {
     dryer.style.cursor = "grab";
 });
 
-// wet dark and dry light we will add water
+
+//check win function 
+
+function checkWin(){
+
+    if (baseDry && rightDry && leftDry && bangsDry){
+
+        clearInterval(runTimer);
+
+        timer.textContent = "🎊Win"
+
+        isDragging = false;
+
+
+    }
+
+    if (time >= 11){
+
+        clearInterval(runTimer);
+
+        timer.textContent = "lose"
+
+        isDragging = false;
+    }
+}
 
 
 
 
-//hair changing from dark (wet) to light (dry)
 
 
 
 
 
-//win or lose based on the time spent drying the hair if <= 20 win
-// if more than 20 seconds lose 
 
 
 
@@ -176,9 +261,3 @@ document.addEventListener("mouseup", function () {
 
 
 //reset button to replay the game 
-
-
-
-
-
-

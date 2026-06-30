@@ -18,12 +18,13 @@ body{
     
     width:220px;
     height:250px;
-    background:#5c3b1e;
+    background:#714926;
     border-radius:50%;
     position:absolute;
     top:20px;
     left:40px;
     z-index:1;
+    
 }
 
 .face{
@@ -35,26 +36,26 @@ body{
     position:absolute;
     top:60px;
     left:45px;
-
     z-index:2;
 }
 
 .hairLeft{
     width:90px;
     height:300px;
-    background:#5c3b1e;
+    background:#714926;
     position:absolute;
     left:20px;
     top:120px;
     border-radius:50px;
     z-index:1;
+
 }
 
 .hairRight{
 
     width:90px;
     height:300px;
-    background:#5c3b1e;
+    background:#714926;
     position:absolute;
     right:20px;
     top:120px;
@@ -66,12 +67,13 @@ body{
 .bangs{
     width:160px;
     height:85px;
-    background:#5c3b1e;
+    background:#714926;
     position:absolute;
     top:45px;
     left:65px;
     border-radius:40px 40px 90px 80px;
     z-index:3;
+    
 }
 
 
@@ -129,7 +131,7 @@ img{
 .game{
 
     position:fixed;
-    top:20px;
+    top:40px;
     left:50%;
     transform:translateX(-50%);
     display:flex;
@@ -149,6 +151,7 @@ img{
     font-weight: bold;
     background: white;
     padding: 10px 15px;
+    color:#b85d5d;
    
     
 }
@@ -180,4 +183,10 @@ img{
 }
 
 
+h1{
 
+    position: fixed;
+    top: 20px;
+    right: 70%;
+    color:#b85d5d
+}
