@@ -24,6 +24,7 @@ const hairBase = document.querySelector('#hairBase')
 const hairLeft =document.querySelector('#hairLeft')
 const hairRight =document.querySelector('#hairRight')
 const bangs =document.querySelector('#bangs')
+
 /*----------------------------- Event Listeners -----------------------------*/
 //start button with timer 
 
@@ -31,7 +32,7 @@ startBtn.addEventListener("click", function (event) {
 
     wetHair();
     // Reset timer
-    time = 15;
+    time = 10;
     timer.textContent = "Time: " + time;
 
     // Prevent multiple intervals
@@ -54,7 +55,7 @@ startBtn.addEventListener("click", function (event) {
 
         }
 
-    }, 1500);
+    }, 1000);
 
 });
 
@@ -137,9 +138,27 @@ dryer.addEventListener("mousedown", function (event) {
         sound.currentTime = 0;
         isPlaying =false;
 
-    }, 15000) //15 seconds
+    }, 10000) //10 seconds
 
 });
+
+
+//overlapping function
+
+function isOverlapping(rectA, rectB){
+
+    return (
+        
+        rectA.right > rectB.left &&
+        rectA.left < rectB.right &&
+        rectA.bottom > rectB.top &&
+        rectA.top < rectB.bottom
+
+    )
+
+}
+
+
 
 // dryer movement around 
 document.addEventListener("mousemove", function (event) {
@@ -159,58 +178,44 @@ document.addEventListener("mousemove", function (event) {
     //get bounding return the size and position of the hair 
 
     const dryerRect = dryer.getBoundingClientRect();
-    const hairRect = hair.getBoundingClientRect();
+    
+    
     //dryer rect position of dryer and hair rect position of hair
 
     //this if statement will check if dryer and hair overlap
 
-    //     if (
-    //     dryerRect.right > hairRect.left &&
-    //     dryerRect.left < hairRect.right &&
-    //     dryerRect.bottom > hairRect.top &&
-    //     dryerRect.top < hairRect.bottom
-    // ) 
+   
+ if (isOverlapping(dryerRect, bangs.getBoundingClientRect())) {
+        
+    setTimeout(function(){
+        dryHairBangs();
+    }, 2000)
+        
+    }
 
-    if(isDragging && dryerRect.top < hairRect.bottom){
+    if (isOverlapping(dryerRect, hairBase.getBoundingClientRect())) {
+        setTimeout(function(){
+        dryHairBase();
+    }, 2000)
+    }
+
+    if (isOverlapping(dryerRect, hairLeft.getBoundingClientRect())) {
 
         setTimeout(function(){
-            dryHairBangs();
+        dryHairLeft();
         }, 2000)
-
-        console.log("bangs is touched!");
-
+        
     }
 
-    if (isDragging && dryerRect.bottom > hairRect.top){
-
+    if (isOverlapping(dryerRect, hairRight.getBoundingClientRect())) {
         setTimeout(function(){
-            dryHairBase();
-        }, 4000)
-        console.log('bottom touched')
+        dryHairRight();
+        }, 2000)
     }
-
-    if(isDragging && dryerRect.left < hairRect.right){
-
-        setTimeout(function(){
-            dryHairLeft();
-        }, 3000)
-
-    }
-
-    if(isDragging && dryerRect.right > hairRect.left){
-
-         setTimeout(function(){
-            dryHairRight();
-        }, 3000)
-            
-    }
-
-
-
-
-
-
 });
+
+
+
 
 // stop dragging
 document.addEventListener("mouseup", function () {
@@ -245,11 +250,11 @@ function checkWin(){
 
 function checkLose(){
 
-    if(time >= 15 && !(baseDry && rightDry && leftDry && bangsDry))
+    if(time = 10 && !(baseDry && rightDry && leftDry && bangsDry))
     
         clearInterval(runTimer);
 
-        timer.textContent = "lose"
+        timer.textContent = "loser"
 
         isDragging = false;
 }
