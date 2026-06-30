@@ -15,6 +15,7 @@ body{
 }
 
 .hairBase{
+    
     width:220px;
     height:250px;
     background:#5c3b1e;
@@ -178,13 +179,5 @@ img{
     pointer-events:none; /* prevents the image from blocking dragging */
 }
 
-#water img{
 
-    position:absolute;
-    top:80px;
-    left:250px;
-    width:180px;
-    display:none;
-    pointer-events:none;
 
-}
