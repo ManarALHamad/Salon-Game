@@ -31,7 +31,7 @@ startBtn.addEventListener("click", function (event) {
 
     wetHair();
     // Reset timer
-    time = 10;
+    time = 15;
     timer.textContent = "Time: " + time;
 
     // Prevent multiple intervals
@@ -48,17 +48,17 @@ startBtn.addEventListener("click", function (event) {
         if (time <= 0) {
 
             clearInterval(runTimer);
-            timer.textContent = "Time's Up!";
+            timer.textContent = "lost";
 
             console.log("Game Over");
 
         }
 
-    }, 1000);
+    }, 1500);
 
 });
 
-//dry hair
+
 
 // /*-------------------------------- Functions --------------------------------*
 
@@ -130,8 +130,6 @@ dryer.addEventListener("mousedown", function (event) {
         sound.play()
         sound.currentTime = 0;
         
-        
-
     }
      stopTimer = setTimeout (function(){
 
@@ -139,7 +137,7 @@ dryer.addEventListener("mousedown", function (event) {
         sound.currentTime = 0;
         isPlaying =false;
 
-    }, 10000) //10 seconds
+    }, 15000) //15 seconds
 
 });
 
@@ -173,36 +171,37 @@ document.addEventListener("mousemove", function (event) {
     //     dryerRect.top < hairRect.bottom
     // ) 
 
-    if(dryerRect.top < hairRect.bottom){
-
-        console.log("Hair is touched!");
+    if(isDragging && dryerRect.top < hairRect.bottom){
 
         setTimeout(function(){
             dryHairBangs();
         }, 2000)
 
+        console.log("bangs is touched!");
+
     }
 
-    if (dryerRect.bottom > hairRect.top){
+    if (isDragging && dryerRect.bottom > hairRect.top){
 
         setTimeout(function(){
             dryHairBase();
-        }, 2000)
+        }, 4000)
+        console.log('bottom touched')
     }
 
-    if(dryerRect.left < hairRect.right){
+    if(isDragging && dryerRect.left < hairRect.right){
 
         setTimeout(function(){
             dryHairLeft();
-        }, 2000)
+        }, 3000)
 
     }
 
-    if(dryerRect.right > hairRect.left){
+    if(isDragging && dryerRect.right > hairRect.left){
 
          setTimeout(function(){
             dryHairRight();
-        }, 2000)
+        }, 3000)
             
     }
 
@@ -235,15 +234,24 @@ function checkWin(){
 
 
     }
+    else if (time <= 0){
 
-    if (time >= 11){
+        checkLose();
 
+    }
+
+    
+}
+
+function checkLose(){
+
+    if(time >= 15 && !(baseDry && rightDry && leftDry && bangsDry))
+    
         clearInterval(runTimer);
 
         timer.textContent = "lose"
 
         isDragging = false;
-    }
 }
 
 
