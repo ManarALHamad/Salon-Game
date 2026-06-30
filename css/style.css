@@ -1,11 +1,16 @@
-body{
-    margin:0;
-    padding:0;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    background:#e6b4d4;
+body {
+    
+    margin: 0;
+    padding: 0;
+    background-image: url("/images/salon.jpeg");
+    background-size: cover;      /* fills the whole screen */
+    background-position: center; /* keeps image centered */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .character{

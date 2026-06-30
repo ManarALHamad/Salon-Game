@@ -11,6 +11,11 @@ let baseDry = false;
 let leftDry = false;
 let rightDry = false;
 let bangsDry =false;
+//timer for each hair section
+let baseTimer = null;
+let leftTimer = null;
+let rightTimer = null;
+let bangsTimer = null;
 
 /*-------------------------------- Variables --------------------------------*/
 
@@ -185,33 +190,42 @@ document.addEventListener("mousemove", function (event) {
     //this if statement will check if dryer and hair overlap
 
    
- if (isOverlapping(dryerRect, bangs.getBoundingClientRect())) {
-        
-    setTimeout(function(){
-        dryHairBangs();
-    }, 2000)
-        
+if (isOverlapping(dryerRect, bangs.getBoundingClientRect())) {
+
+    if (!bangsTimer && !bangsDry) {
+
+        bangsTimer = setTimeout(function () {
+            dryHairBangs();
+            bangsTimer = null;
+        }, 2000);
+
     }
 
-    if (isOverlapping(dryerRect, hairBase.getBoundingClientRect())) {
-        setTimeout(function(){
-        dryHairBase();
-    }, 2000)
+} else {
+
+    clearTimeout(bangsTimer);
+    bangsTimer = null;
+
+}
+
+if (isOverlapping(dryerRect, hairRight.getBoundingClientRect())) {
+
+    if (!rightTimer && !rightDry) {
+
+        rightTimer = setTimeout(function () {
+            dryHairRight();
+            rightTimer = null;
+        }, 2000);
+
     }
 
-    if (isOverlapping(dryerRect, hairLeft.getBoundingClientRect())) {
+} else {
 
-        setTimeout(function(){
-        dryHairLeft();
-        }, 2000)
-        
-    }
+    clearTimeout(rightTimer);
+    rightTimer = null;
 
-    if (isOverlapping(dryerRect, hairRight.getBoundingClientRect())) {
-        setTimeout(function(){
-        dryHairRight();
-        }, 2000)
-    }
+}
+
 });
 
 
