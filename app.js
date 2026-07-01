@@ -58,6 +58,9 @@ startBtn.addEventListener("click", function (event) {
             clearInterval(runTimer);
             timer.textContent = "Time over you lost";
 
+            dryer.style.left = "";
+            dryer.style.top = "";
+            dryer.style.cursor = "grab";
             
 
         }
@@ -299,6 +302,10 @@ function checkWin(){
 
         isDragging = false;
 
+        dryer.style.left = "";
+        dryer.style.top = "";
+        dryer.style.cursor = "grab";
+
 
     }
     else if (time <= 0){
@@ -319,6 +326,10 @@ function checkLose(){
     timer.textContent = "😞 You Lost!";
 
     isDragging = false;
+
+    dryer.style.left = "";
+    dryer.style.top = "";
+    dryer.style.cursor = "grab";
 
    
 }
@@ -359,7 +370,7 @@ reset.addEventListener('click', function(){
     // reset the timer display
     timer.textContent = "Time: " + time;
 
-    // put the dryer back to its starting spot and cursor
+   
     dryer.style.left = "";
     dryer.style.top = "";
     dryer.style.cursor = "grab";
