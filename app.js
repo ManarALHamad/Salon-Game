@@ -6,6 +6,8 @@ let isDragging = false;
 let offsetX = 0;  //store where the dryer is clicked 
 let offsetY = 0;
 let runTimer;
+let time= 20;
+let gameOver = false;
 //hair sections 
 let baseDry = false;
 let leftDry = false;
@@ -29,7 +31,7 @@ const hairBase = document.querySelector('#hairBase')
 const hairLeft =document.querySelector('#hairLeft')
 const hairRight =document.querySelector('#hairRight')
 const bangs =document.querySelector('#bangs')
-
+const replay =document.querySelector('#reset')
 /*----------------------------- Event Listeners -----------------------------*/
 //start button with timer 
 
@@ -118,7 +120,7 @@ function wetHair(){
 dryer.addEventListener("mousedown", function (event) {
 
     isDragging = true;
-
+    if (gameOver) return;
     // distance between dryer and mouse
     offsetX = event.clientX - dryer.offsetLeft;
     offsetY = event.clientY - dryer.offsetTop;
@@ -170,7 +172,7 @@ document.addEventListener("mousemove", function (event) {
 
     //if the dryer is not being dragged the function will stop
 
-    if (!isDragging) return;
+    if (!isDragging || gameOver ) return;
 
     dryer.style.left = (event.clientX - offsetX) + "px"; //mouse horizontal
     dryer.style.top = (event.clientY - offsetY) + "px";  //mouse vertical
@@ -288,11 +290,15 @@ document.addEventListener("mouseup", function () {
 
 function checkWin(){
 
+    if (gameOver) return;
+
     if (baseDry && rightDry && leftDry && bangsDry){
+
+        gameOver = true;
 
         clearInterval(runTimer);
 
-        timer.textContent = "🎊Win"
+        timer.textContent = "🎊Winner"
 
         isDragging = false;
 
@@ -309,20 +315,58 @@ function checkWin(){
 
 function checkLose(){
 
-    if(time <= 20 && !(baseDry && rightDry && leftDry && bangsDry))
-    
-        clearInterval(runTimer);
+    if (gameOver) return;
 
-        timer.textContent = "lost😞"
+    gameOver = true;
 
-        isDragging = false;
+    clearInterval(runTimer);
+
+    timer.textContent = "😞 You Lost!";
+
+    isDragging = false;
+
+   
 }
 
 
 
+//reset button to replay the game 
+
+
+replay.addEventListener('click', function(){
+console.log("Replay clicked");
+
+clearInterval(runTimer);
+
+clearTimeout(baseTimer);
+clearTimeout(rightTimer);
+clearTimeout(leftTimer);
+clearTimeout(bangsTimer);
+
+
+
+sound.pause();
+sound.currentTime = 0;
+
+time = 20;
+gameOver = false;
+
+wetHair();
+
+dryer.style.left = "40px";
+dryer.style.top = "450px";
+
+
+
+})
+
+
+
+
+
+//fix win and lose
 
 
 //when time stops I wanna disable the dragging
 
 
-//reset button to replay the game 
