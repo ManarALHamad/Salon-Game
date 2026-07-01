@@ -1,5 +1,4 @@
 
-/*-------------------------------- Constants --------------------------------*/
 
 let stopTimer;
 let isDragging = false;
@@ -18,8 +17,9 @@ let baseTimer = null;
 let leftTimer = null;
 let rightTimer = null;
 let bangsTimer = null; 
+//game over
+let gameOver = false;
 
-/*-------------------------------- Variables --------------------------------*/
 
 /*------------------------ Cached Element References ------------------------*/
 const dryer = document.getElementById("dryer");
@@ -57,6 +57,8 @@ startBtn.addEventListener("click", function (event) {
 
             clearInterval(runTimer);
             timer.textContent = "Time over you lost";
+            gameOver = true;
+            checkLose();
 
             dryer.style.left = "";
             dryer.style.top = "";
@@ -75,27 +77,28 @@ startBtn.addEventListener("click", function (event) {
 
 function dryHairBase(){
 
+if(gameOver) return;
    hairBase.style.backgroundColor = '#714926';
    baseDry = true;
    checkWin();  
 }
 
 function dryHairLeft(){
-
+    if(gameOver) return;
     hairLeft.style.backgroundColor = '#714926';
     leftDry = true;
     checkWin();
 }
 
 function dryHairRight(){
-
+    if(gameOver) return;
     hairRight.style.backgroundColor = '#714926';
     rightDry = true;
     checkWin();
 }
 
 function dryHairBangs(){
-
+    if(gameOver) return;
     bangs.style.backgroundColor = '#714926';
     bangsDry = true;
     checkWin();
@@ -374,19 +377,6 @@ reset.addEventListener('click', function(){
     dryer.style.left = "";
     dryer.style.top = "";
     dryer.style.cursor = "grab";
+
 });
 
-
-
-
-
-
-
-//fix win and lose
-
-
-//when time stops I wanna disable the dragging
-
-
-//modify the ui 
-//pop up if win or lose 
