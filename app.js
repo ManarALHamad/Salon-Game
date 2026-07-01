@@ -15,7 +15,7 @@ let bangsDry =false;
 let baseTimer = null;
 let leftTimer = null;
 let rightTimer = null;
-let bangsTimer = null;
+let bangsTimer = null; 
 
 /*-------------------------------- Variables --------------------------------*/
 
@@ -37,7 +37,7 @@ startBtn.addEventListener("click", function (event) {
 
     wetHair();
     // Reset timer
-    time = 10;
+    time = 20;
     timer.textContent = "Time: " + time;
 
     // Prevent multiple intervals
@@ -54,9 +54,9 @@ startBtn.addEventListener("click", function (event) {
         if (time <= 0) {
 
             clearInterval(runTimer);
-            timer.textContent = "lost";
+            timer.textContent = "Time over you lost";
 
-            console.log("Game Over");
+            
 
         }
 
@@ -143,13 +143,13 @@ dryer.addEventListener("mousedown", function (event) {
         sound.currentTime = 0;
         isPlaying =false;
 
-    }, 10000) //10 seconds
+    }, 20000) //20 seconds
 
 });
 
 
 //overlapping function
-
+//rectA is the dryer and rectB is the hair we check if the overlap
 function isOverlapping(rectA, rectB){
 
     return (
@@ -178,7 +178,7 @@ document.addEventListener("mousemove", function (event) {
 
     // we will point to the hair using right, left, top, bottom
     // direction of the hair 
-    // dropzone is the hair sections
+
 
     //get bounding return the size and position of the hair 
 
@@ -188,6 +188,7 @@ document.addEventListener("mousemove", function (event) {
     //dryer rect position of dryer and hair rect position of hair
 
     //this if statement will check if dryer and hair overlap
+    //there is timer for each hair section
 
    
 if (isOverlapping(dryerRect, bangs.getBoundingClientRect())) {
@@ -197,7 +198,7 @@ if (isOverlapping(dryerRect, bangs.getBoundingClientRect())) {
         bangsTimer = setTimeout(function () {
             dryHairBangs();
             bangsTimer = null;
-        }, 2000);
+        }, 5000);
 
     }
 
@@ -215,7 +216,7 @@ if (isOverlapping(dryerRect, hairRight.getBoundingClientRect())) {
         rightTimer = setTimeout(function () {
             dryHairRight();
             rightTimer = null;
-        }, 2000);
+        }, 5000);
 
     }
 
@@ -225,6 +226,50 @@ if (isOverlapping(dryerRect, hairRight.getBoundingClientRect())) {
     rightTimer = null;
 
 }
+
+
+//leftTimer 
+
+if (isOverlapping(dryerRect, hairLeft.getBoundingClientRect())) {
+
+    if (!leftTimer && !leftDry) {
+
+        leftTimer = setTimeout(function () {
+            dryHairLeft();
+            leftTimer  = null;
+        }, 5000);
+
+    }
+
+} else {
+
+    clearTimeout(leftTimer);
+    leftTimer = null;
+
+}
+
+//baseTimer 
+
+if (isOverlapping(dryerRect, hairBase.getBoundingClientRect())) {
+
+    if (!baseTimer  && !baseDry) {
+
+        baseTimer  = setTimeout(function () {
+            dryHairBase();
+            baseTimer   = null;
+        }, 5000);
+
+    }
+
+} else {
+
+    clearTimeout(baseTimer );
+    baseTimer  = null;
+
+}
+
+
+
 
 });
 
@@ -264,21 +309,14 @@ function checkWin(){
 
 function checkLose(){
 
-    if(time = 10 && !(baseDry && rightDry && leftDry && bangsDry))
+    if(time <= 20 && !(baseDry && rightDry && leftDry && bangsDry))
     
         clearInterval(runTimer);
 
-        timer.textContent = "loser"
+        timer.textContent = "lost😞"
 
         isDragging = false;
 }
-
-
-
-
-
-
-
 
 
 

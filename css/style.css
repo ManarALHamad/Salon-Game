@@ -1,5 +1,5 @@
 body {
-    
+
     margin: 0;
     padding: 0;
     background-image: url("/images/salon.jpeg");
@@ -11,6 +11,8 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+  
+    
 }
 
 .character{
@@ -193,5 +195,28 @@ h1{
     position: fixed;
     top: 20px;
     right: 70%;
-    color:#b85d5d
+    color:#b85d5d;
+    background: white;
+}
+
+h2{
+
+
+    position: fixed;
+    top: 200px;
+    right: 80%;
+     color:#b85d5d;
+    background: white;
+
+}
+
+P{
+
+   position: fixed;
+    top: 235px;
+    right: 75%;
+   
+     color:#b85d5d;
+    background: white;
+
 }
