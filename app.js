@@ -7,7 +7,7 @@ let offsetX = 0;  //store where the dryer is clicked
 let offsetY = 0;
 let runTimer;
 let time= 20;
-let gameOver = false;
+
 //hair sections 
 let baseDry = false;
 let leftDry = false;
@@ -31,7 +31,7 @@ const hairBase = document.querySelector('#hairBase')
 const hairLeft =document.querySelector('#hairLeft')
 const hairRight =document.querySelector('#hairRight')
 const bangs =document.querySelector('#bangs')
-const replay =document.querySelector('#reset')
+const reset =document.querySelector('#reset')
 /*----------------------------- Event Listeners -----------------------------*/
 //start button with timer 
 
@@ -51,7 +51,7 @@ startBtn.addEventListener("click", function (event) {
         time--;
         timer.textContent = "Time: " + time;
 
-        // console.log("Time left:", time);
+        console.log("Time left:", time);
 
         if (time <= 0) {
 
@@ -120,7 +120,7 @@ function wetHair(){
 dryer.addEventListener("mousedown", function (event) {
 
     isDragging = true;
-    if (gameOver) return;
+    
     // distance between dryer and mouse
     offsetX = event.clientX - dryer.offsetLeft;
     offsetY = event.clientY - dryer.offsetTop;
@@ -166,13 +166,12 @@ function isOverlapping(rectA, rectB){
 }
 
 
-
 // dryer movement around 
 document.addEventListener("mousemove", function (event) {
 
     //if the dryer is not being dragged the function will stop
 
-    if (!isDragging || gameOver ) return;
+    if (!isDragging) return;
 
     dryer.style.left = (event.clientX - offsetX) + "px"; //mouse horizontal
     dryer.style.top = (event.clientY - offsetY) + "px";  //mouse vertical
@@ -283,6 +282,7 @@ document.addEventListener("mouseup", function () {
 
     isDragging = false;
     dryer.style.cursor = "grab";
+    
 });
 
 
@@ -290,11 +290,8 @@ document.addEventListener("mouseup", function () {
 
 function checkWin(){
 
-    if (gameOver) return;
-
     if (baseDry && rightDry && leftDry && bangsDry){
 
-        gameOver = true;
 
         clearInterval(runTimer);
 
@@ -315,9 +312,7 @@ function checkWin(){
 
 function checkLose(){
 
-    if (gameOver) return;
-
-    gameOver = true;
+  
 
     clearInterval(runTimer);
 
@@ -332,33 +327,45 @@ function checkLose(){
 
 //reset button to replay the game 
 
+reset.addEventListener('click', function(){
+    console.log("Replay clicked");
 
-replay.addEventListener('click', function(){
-console.log("Replay clicked");
+    // stop any running countdown
+    clearInterval(runTimer);
 
-clearInterval(runTimer);
+    // stop any pending "hair drying" timeouts
+    clearTimeout(baseTimer);
+    clearTimeout(rightTimer);
+    clearTimeout(leftTimer);
+    clearTimeout(bangsTimer);
 
-clearTimeout(baseTimer);
-clearTimeout(rightTimer);
-clearTimeout(leftTimer);
-clearTimeout(bangsTimer);
+    baseTimer = null;
+    rightTimer = null;
+    leftTimer = null;
+    bangsTimer = null;
+
+    // stop the dryer sound
+    sound.pause();
+    sound.currentTime = 0;
+
+    // reset game state
+    time = 20;
+    gameOver = false;
+    isDragging = false;
+
+    // reset hair back to wet (also resets baseDry/leftDry/rightDry/bangsDry to false)
+    wetHair();
+
+    // reset the timer display
+    timer.textContent = "Time: " + time;
+
+    // put the dryer back to its starting spot and cursor
+    dryer.style.left = "";
+    dryer.style.top = "";
+    dryer.style.cursor = "grab";
+});
 
 
-
-sound.pause();
-sound.currentTime = 0;
-
-time = 20;
-gameOver = false;
-
-wetHair();
-
-dryer.style.left = "40px";
-dryer.style.top = "450px";
-
-
-
-})
 
 
 
@@ -370,3 +377,5 @@ dryer.style.top = "450px";
 //when time stops I wanna disable the dragging
 
 
+//modify the ui 
+//pop up if win or lose 

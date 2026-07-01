@@ -112,11 +112,11 @@ img{
 
 /* Nose */
 .nose{
+
     width:10px;
     height:35px;
     background:#e3b18d;
     border-radius:10px;
-
     position:absolute;
     top:115px;
     left:50%;
@@ -158,9 +158,11 @@ img{
     font-weight: bold;
     background: white;
     padding: 10px 15px;
-    color:#b85d5d;
-   
-    
+    color:#d63384;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(223, 213, 213, 0.3);
+    border: 3px solid #ffb6c1;
+
 }
 
 #reset {
@@ -169,17 +171,20 @@ img{
     bottom: 20px;
     left: 50%;
     /* move to the left horizontaly */
-    transform: translateX(-50%); 
+    transform: translateX(-50%);
+    
 
 }
 
 
 #dryer{
+
     position: fixed;
-    left: 40px;
-    bottom: 40px;
+    right: 80px;
     cursor: grab;
     z-index: 1000;
+   
+    
 }
 
 #dryer img{
@@ -189,34 +194,63 @@ img{
     pointer-events:none; /* prevents the image from blocking dragging */
 }
 
-
-h1{
-
+#gameHeader{
     position: fixed;
     top: 20px;
-    right: 70%;
-    color:#b85d5d;
+    left: 20px;
+    z-index: 20;
+    text-align: left;
+    max-width: 240px;
+    
+}
+
+.welcome-title{
+
+    margin: 0 0 7px 0;
+    font-size: 45px;
+    color: #d63384;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+    border-radius: 29px;
+    box-shadow: 0 8px 20px rgba(223, 213, 213, 0.3);
+    border: 3px solid #ffb6c1;
+    display: inline-block; 
     background: white;
 }
 
-h2{
+.instructions{
+
+    margin: 0;
+    padding-left: 18px;
+    font-size: 20px;
+    color: #5a3a2e;
+    background: rgba(255,255,255,0.75);
+    border-radius: 12px;
+    padding: 10px 10px 10px 24px;
+    display: inline-block; 
+}
+
+.instructions li{
+    margin-bottom: 55px;
+}
 
 
-    position: fixed;
-    top: 200px;
-    right: 80%;
-     color:#b85d5d;
-    background: white;
+#startBtn{
+
+    color :#d63384;
+    font-size: 30px;
+    background-color: white;
+    border-radius: 12px;
+    border-color: #ffb6c1;
 
 }
 
-P{
+#reset{
 
-   position: fixed;
-    top: 235px;
-    right: 75%;
-   
-     color:#b85d5d;
-    background: white;
+ color :#d63384;
+    font-size: 30px;
+    background-color: white;
+    border-radius: 12px;
+    border-color: #ffb6c1;
 
 }
+ 
