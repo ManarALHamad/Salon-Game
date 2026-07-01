@@ -4,18 +4,26 @@
 
 ![My Game](images/MyGame.png)
 
-## Getting Started
+## 👩🏻‍💻 Getting Started
 
 
-### Play the game
-
+### 🎮 Play the game
+[ click to play ](https://manaralhamad.github.io/Salon-Game/)
 ### How to play 
+- Drag the hair dryer over each hair section spend 5 seconds in each section
+- Be fast and concetrate on the timer
+- click the start button and have fun
+### 👩🏻‍🔧 Installiation
 
-### Installiation
 No installiation is required! Simply clone the repo to your machine and open the `index.html` file in your browser
-### Technology Used
+
+### 📲 Technology Used
 - **Html**
 - **CSS**
 - **Javascript**
 
-### Future Enhancement 
+### 🎯 Future Enhancement 
+
+- hair wash feature
+- levels for the game
+- a whole salon game 

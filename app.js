@@ -1,27 +1,27 @@
 
-
-let stopTimer;
-let isDragging = false;
+let stopTimer; //to stop the game timer
+let isDragging = false; //to drag the blow dryer
 let offsetX = 0;  //store where the dryer is clicked 
 let offsetY = 0;
-let runTimer;
+let runTimer;  //store main countdown timer
 let time= 20;
 
-//hair sections 
-let baseDry = false;
+//hair sections are false before drying the hair
+let baseDry = false; 
 let leftDry = false;
 let rightDry = false;
 let bangsDry =false;
-//timer for each hair section
+//timer for each hair section null before drying
 let baseTimer = null;
 let leftTimer = null;
 let rightTimer = null;
 let bangsTimer = null; 
-//game over
+//game over when the game ends 
 let gameOver = false;
 
 
 /*------------------------ Cached Element References ------------------------*/
+// each variable to its html
 const dryer = document.getElementById("dryer");
 const sound = new Audio ('sounds/hair-dryer-sound.mp3') //adding the blow-dryer sound
 const startBtn = document.querySelector('#startBtn')
@@ -38,14 +38,14 @@ const reset =document.querySelector('#reset')
 startBtn.addEventListener("click", function (event) {
 
     wetHair();
-    // Reset timer
+    
     time = 20;
     timer.textContent = "Time: " + time;
 
-    // Prevent multiple intervals
+    // prevent multiple intervals
     clearInterval(runTimer);
 
-    // Start counting down
+    // timer will start
     runTimer = setInterval(function () {
 
         time--;
@@ -54,7 +54,7 @@ startBtn.addEventListener("click", function (event) {
         console.log("Time left:", time);
 
         if (time <= 0) {
-
+            //stop countdown
             clearInterval(runTimer);
             timer.textContent = "Time over you lost";
             gameOver = true;
@@ -77,10 +77,11 @@ startBtn.addEventListener("click", function (event) {
 
 function dryHairBase(){
 
-if(gameOver) return;
+if(gameOver) return; //the function will stop if the game ended so 
+// the hair stay wet
    hairBase.style.backgroundColor = '#714926';
    baseDry = true;
-   checkWin();  
+   checkWin();  //checks all hair section to decide win or lose
 }
 
 function dryHairLeft(){
@@ -104,7 +105,7 @@ function dryHairBangs(){
     checkWin();
 }   
    
-
+//hair is dark cause its wet
 function wetHair(){
 
    hairBase.style.backgroundColor = '#331d0a';
@@ -127,7 +128,8 @@ dryer.addEventListener("mousedown", function (event) {
 
     isDragging = true;
     
-    // distance between dryer and mouse
+    // distance between dryer and mouse 
+    //its saving the distance between dryer and mouse
     offsetX = event.clientX - dryer.offsetLeft;
     offsetY = event.clientY - dryer.offsetTop;
 
@@ -151,13 +153,15 @@ dryer.addEventListener("mousedown", function (event) {
         sound.currentTime = 0;
         isPlaying =false;
 
-    }, 20000) //20 seconds
+    }, 20000) //20 seconds till the sound stops
 
 });
 
 
 //overlapping function
 //rectA is the dryer and rectB is the hair we check if the overlap
+//collision detection
+
 function isOverlapping(rectA, rectB){
 
     return (
@@ -215,7 +219,7 @@ if (isOverlapping(dryerRect, bangs.getBoundingClientRect())) {
     bangsTimer = null;
 
 }
-
+//get bounding will get the size and position
 if (isOverlapping(dryerRect, hairRight.getBoundingClientRect())) {
 
     if (!rightTimer && !rightDry) {
@@ -347,7 +351,7 @@ reset.addEventListener('click', function(){
     // stop any running countdown
     clearInterval(runTimer);
 
-    // stop any pending "hair drying" timeouts
+    // stop any pending hair drying timeouts
     clearTimeout(baseTimer);
     clearTimeout(rightTimer);
     clearTimeout(leftTimer);
